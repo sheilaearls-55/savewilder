@@ -69,6 +69,13 @@ h1 span{color:var(--green)}
 .lg-empty{background:var(--surface);border:1px solid var(--line)}
 .note{font-size:.82rem;color:var(--muted)}
 
+/* Why not Wilder */
+.reasons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem 2rem}
+.reason{display:flex;flex-direction:column;gap:.3rem;min-width:0;border-top:2px solid var(--green);padding-top:.75rem}
+.reason p{color:var(--muted)}
+.reason .big{font-family:var(--display);font-weight:700;font-size:1.6rem;color:var(--green);font-variant-numeric:tabular-nums;line-height:1.1}
+@media (max-width:620px){.reasons{grid-template-columns:1fr}}
+
 /* Asks */
 .asks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1rem}
 .asks li{display:grid;grid-template-columns:2.2rem 1fr;gap:.75rem;align-items:start}
@@ -152,6 +159,23 @@ footer ul{margin:0;padding-left:1.1rem}
       </div>
     </div>
     <p class="note">Enrollment and capacity from LWSD's October 2025 capacity table. Ranking from SchoolDigger, 2026.</p>
+  </div>
+</section>
+
+<section id="why-not-wilder">
+  <div class="wrap">
+    <p class="eyebrow">Why not Wilder</p>
+    <h2>Closing Wilder wouldn't fix the problem</h2>
+    <p class="lede">The district's own forecasts and criteria make the case. This isn't only about how much we love our school.</p>
+    <div class="reasons">
+      <div class="reason"><span class="big">69%</span><h3>It leaves the problem in place</h3><p>Wilder and its two Redmond Ridge neighbors share 1,518 permanent seats for a projected 794 students in 2035. Close Wilder, and those schools still sit at about 69%, short of the district's 80–90% goal. That points to a second closure in the same community.</p></div>
+      <div class="reason"><span class="big">Least saved</span><h3>It saves the least</h3><p>Each elementary costs $1.5–2.1 million a year to run. As one of the smallest schools, with the leanest staffing, Wilder sits at the low end of that range.</p></div>
+      <div class="reason"><span class="big">~437 seats</span><h3>Its capacity is understated</h3><p>Three of Wilder's 23 classrooms host district preschool. Counted as regular classrooms, Wilder holds about 437 students, not 368.</p></div>
+      <div class="reason"><span class="big">Above median</span><h3>Condition isn't a reason</h3><p>Wilder's last state building assessment scored above the district median. When an LWSD building scores low, the district rebuilds it rather than closing it.</p></div>
+      <div class="reason"><span class="big">Longest trips</span><h3>Our kids would travel farthest</h3><p>Wilder serves the most spread-out area around it, north and east toward Cottage Lake and Novelty Hill. Reassigning these families means more travel per student than any nearby alternative.</p></div>
+      <div class="reason"><span class="big">Fill it</span><h3>It can be filled instead</h3><p>Wilder is an under-filled school that boundary changes and program placement could bring into the target range, without closing anything.</p></div>
+    </div>
+    <p class="note">Sources: LWSD enrollment forecasts (FLO Analytics, middle scenario, Aug 2026); LWSD Six-Year Capital Facilities Plan 2026–2031; LWSD Session 5 (fixed costs); state building condition assessment as reported to the LWSD board (2016 assessment, the most recent published for Wilder).</p>
   </div>
 </section>
 
