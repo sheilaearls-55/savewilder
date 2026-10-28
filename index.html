@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Parent-led campaign to keep Laura Ingalls Wilder Elementary in Woodinville open. Sign the petition and write LWSD.">
+<title>Save Wilder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+/* Layout: one calm reading column; a bus-yellow action band up top, a seat gauge as the one picture, then help / dates / FAQ */
+:root{
+  --bg:#F3F6F3; --surface:#FFFFFF; --ink:#14231E; --muted:#4D5E57; --line:#D5DED9;
+  --green:#1E5B47; --green-soft:#E1ECE6; --yellow:#F2B705; --on-yellow:#14231E;
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body:"Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1814; --surface:#16231E; --ink:#E7EFEA; --muted:#A1B3AB; --line:#2A3B34;
+  --green:#7CC9A8; --green-soft:#1C3029; --yellow:#F5C431; --on-yellow:#14231E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1814; --surface:#16231E; --ink:#E7EFEA; --muted:#A1B3AB; --line:#2A3B34;
+  --green:#7CC9A8; --green-soft:#1C3029; --yellow:#F5C431; --on-yellow:#14231E; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+.wrap{max-width:46rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.6rem,4vw,2.1rem);font-weight:700}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0}
+a{color:var(--green);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--yellow);outline-offset:3px;border-radius:4px}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--green)}
+section{padding-block:3.25rem;border-top:1px solid var(--line)}
+section .wrap{display:flex;flex-direction:column;gap:1.25rem}
+.lede{color:var(--muted);max-width:62ch}
+
+/* Hero */
+header{padding-block:3.5rem 2.75rem}
+header .wrap{display:flex;flex-direction:column;gap:1.25rem}
+h1{font-size:clamp(2.8rem,10vw,5.2rem);font-weight:800;letter-spacing:-.02em}
+h1 span{color:var(--green)}
+.hero-text{font-size:1.15rem;max-width:58ch}
+.status{display:flex;gap:.6rem;align-items:flex-start;background:var(--green-soft);border-radius:10px;padding:.85rem 1rem;font-size:.95rem}
+.status b{white-space:nowrap}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;text-decoration:none;border-radius:999px;padding:.85rem 1.4rem;font-size:1rem;border:2px solid transparent}
+.btn-primary{background:var(--yellow);color:var(--on-yellow)}
+.btn-primary:hover{filter:brightness(1.05)}
+.btn-ghost{border-color:var(--green);color:var(--green)}
+.btn-ghost:hover{background:var(--green-soft)}
+
+/* Seat gauge */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;border-block:1px solid var(--line);padding-block:1.1rem}
+.fact{display:flex;flex-direction:column;gap:.15rem;min-width:0}
+.fact strong{font-family:var(--display);font-size:2rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.fact span{font-size:.85rem;color:var(--muted);line-height:1.35}
+@media (max-width:620px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.gauge{display:flex;flex-direction:column;gap:.5rem}
+.gauge-label{display:flex;justify-content:space-between;font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.track{position:relative;height:30px;background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.fill{position:absolute;inset:0 auto 0 0;width:64.7%;background:var(--green)}
+.target{position:absolute;top:0;bottom:0;left:80%;width:10%;background:repeating-linear-gradient(135deg,var(--yellow) 0 6px,transparent 6px 12px);opacity:.85}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem 1.25rem;font-size:.85rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:.4rem;vertical-align:-1px}
+.lg-fill{background:var(--green)} .lg-target{background:repeating-linear-gradient(135deg,var(--yellow) 0 3px,transparent 3px 6px);border:1px solid var(--yellow)}
+.lg-empty{background:var(--surface);border:1px solid var(--line)}
+.note{font-size:.82rem;color:var(--muted)}
+
+/* Asks */
+.asks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1rem}
+.asks li{display:grid;grid-template-columns:2.2rem 1fr;gap:.75rem;align-items:start}
+.asks .n{font-family:var(--display);font-weight:800;font-size:1.4rem;color:var(--green);line-height:1.3}
+.asks p{color:var(--muted);margin-top:.15rem}
+
+/* Help */
+.steps{display:flex;flex-direction:column;gap:1.75rem}
+.step{display:flex;flex-direction:column;gap:.6rem}
+.addr-list{display:flex;flex-direction:column;gap:.5rem}
+.addr{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .75rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:.6rem .8rem}
+.addr code{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:.92rem;user-select:all;overflow-wrap:anywhere;min-width:0;flex:1 1 14rem}
+.addr small{color:var(--muted);flex-basis:100%;font-size:.8rem;order:3}
+.copy{font:inherit;font-size:.85rem;font-weight:700;color:var(--green);background:transparent;border:1.5px solid var(--green);border-radius:999px;padding:.3rem .85rem;cursor:pointer}
+.copy:hover{background:var(--green-soft)}
+.tips{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.35rem}
+.tips li::marker{color:var(--green)}
+.letter{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.75rem}
+.letter-head{display:flex;justify-content:space-between;align-items:center;gap:.75rem;flex-wrap:wrap}
+.letter pre{margin:0;white-space:pre-wrap;font-family:var(--body);font-size:.95rem;line-height:1.6;min-width:0}
+.avoid{font-size:.92rem;color:var(--muted)}
+
+/* Dates */
+.dates{list-style:none;margin:0;padding:0;border-left:2px solid var(--line);display:flex;flex-direction:column}
+.dates li{position:relative;display:grid;grid-template-columns:7.5rem 1fr;gap:.25rem 1rem;padding:.7rem 0 .7rem 1.25rem}
+.dates li::before{content:"";position:absolute;left:-7px;top:1.15rem;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--line)}
+.dates time{font-weight:700;font-variant-numeric:tabular-nums;font-size:.95rem}
+.dates .what{min-width:0}
+.dates .what span{display:block;color:var(--muted);font-size:.9rem}
+.dates li.past{opacity:.55}
+.dates li.next::before{background:var(--yellow);border-color:var(--yellow)}
+.dates li.next time::after{content:"Next";margin-left:.5rem;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;background:var(--yellow);color:var(--on-yellow);border-radius:999px;padding:.1rem .5rem;vertical-align:2px}
+.dates li.key .what b{color:var(--green)}
+@media (max-width:520px){.dates li{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:.5rem}
+details{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:.85rem 1rem}
+summary{cursor:pointer;font-weight:700}
+details p{margin-top:.6rem;color:var(--muted)}
+
+footer{border-top:1px solid var(--line);padding-block:2.25rem 3rem;font-size:.88rem;color:var(--muted)}
+footer .wrap{display:flex;flex-direction:column;gap:.75rem}
+footer ul{margin:0;padding-left:1.1rem}
+@media (prefers-reduced-motion:no-preference){.btn,.copy{transition:background .15s, filter .15s}}
+</style>
+<style>body{margin:0} img{max-width:100%} [hidden]{display:none!important}</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Wilder Elementary · Woodinville</p>
+    <h1>Save <span>Wilder</span></h1>
+    <p class="hero-text">Lake Washington School District is deciding which schools to consolidate or close. We're asking LWSD to evaluate alternatives first, using current enrollment and housing data, the full costs of closure, and the impact on children, families and existing programs.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://tinyurl.com/savewilder" target="_blank" rel="noopener">Sign the petition →</a>
+      <a class="btn btn-ghost" href="#help">Write the district</a>
+    </div>
+    <p class="status"><b>Where things stand:</b> <span>No school has been chosen for closure yet. The final recommendation goes to the school board on March 22, 2027, and any changes take effect in September 2028.</span></p>
+  </div>
+</header>
+
+<section id="numbers">
+  <div class="wrap">
+    <p class="eyebrow">Wilder by the numbers</p>
+    <h2>Room to grow, in real classrooms</h2>
+    <p class="lede">LWSD measures each school against its permanent capacity, not portables, and aims to use 80–90% of it. Wilder has space to help the district reach that goal.</p>
+    <div class="facts">
+      <div class="fact"><strong>238</strong><span>students enrolled (Oct 2025)</span></div>
+      <div class="fact"><strong>368</strong><span>seats in permanent classrooms</span></div>
+      <div class="fact"><strong>~130</strong><span>empty permanent seats</span></div>
+      <div class="fact"><strong>Top 2%</strong><span>of Washington elementaries (16th of 1,138)</span></div>
+    </div>
+    <div class="gauge" role="img" aria-label="Wilder uses 65 percent of its 368 permanent seats. The district's target range is 80 to 90 percent.">
+      <div class="gauge-label"><span>0 seats</span><span>65% used today</span><span>368 seats</span></div>
+      <div class="track"><div class="fill"></div><div class="target"></div></div>
+      <div class="legend">
+        <span><i class="lg-fill"></i>238 students today</span>
+        <span><i class="lg-target"></i>District target: 80–90% (295–331 students)</span>
+        <span><i class="lg-empty"></i>Open permanent seats</span>
+      </div>
+    </div>
+    <p class="note">Enrollment and capacity from LWSD's October 2025 capacity table. Ranking from SchoolDigger, 2026.</p>
+  </div>
+</section>
+
+<section id="asks">
+  <div class="wrap">
+    <p class="eyebrow">What we're asking LWSD</p>
+    <h2>Look at every option before closing a school</h2>
+    <ol class="asks">
+      <li><span class="n">1</span><div><h3>Fill Wilder first</h3><p>Evaluate boundary adjustments and program placements that bring Wilder to 80–90% of its permanent capacity before considering closure.</p></div></li>
+      <li><span class="n">2</span><div><h3>Use current data</h3><p>Make sure projections reflect recent home sales. Many longtime owners in our neighborhoods have sold to young families with children not yet in school.</p></div></li>
+      <li><span class="n">3</span><div><h3>Publish the full cost</h3><p>Show the net savings of any closure after added busing, upkeep of an empty building, costs at receiving schools and families who leave the district.</p></div></li>
+      <li><span class="n">4</span><div><h3>Weigh the impact on kids and families</h3><p>Wilder is the only LWSD elementary in Woodinville, and its nearest neighbors are more than three miles away by road. Closure would put our littlest learners on long bus rides and disrupt existing programs, including Wilder's preschool classrooms.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="help">
+  <div class="wrap">
+    <p class="eyebrow">How you can help</p>
+    <h2>Three things you can do this week</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>1. Sign the petition</h3>
+        <p>It takes about 30 seconds. Parents, alumni, staff and neighbors are all welcome. There's a box on the form if you'd like to volunteer for canvassing or outreach.</p>
+        <div class="actions"><a class="btn btn-primary" href="https://tinyurl.com/savewilder" target="_blank" rel="noopener">Sign at savewilder.com/sign →</a></div>
+      </div>
+
+      <div class="step">
+        <h3>2. Send a short, personal email</h3>
+        <p>A few sentences in your own words carry more weight than a form letter. Send it to all three:</p>
+        <div class="addr-list">
+          <div class="addr"><code id="a1">boardmembers@lwsd.org</code><button class="copy" type="button" data-copy="a1">Copy</button><small>LWSD School Board, who make the final decision</small></div>
+          <div class="addr"><code id="a2">superintendent@lwsd.org</code><button class="copy" type="button" data-copy="a2">Copy</button><small>Superintendent Dr. Jon Holmen</small></div>
+          <div class="addr"><code id="a3">BoundaryCommittee@lwsd.org</code><button class="copy" type="button" data-copy="a3">Copy</button><small>Boundary &amp; Enrollment Realignment Committee</small></div>
+        </div>
+        <h3 style="margin-top:.75rem">Tips for writing it</h3>
+        <ul class="tips">
+          <li>Say who you are: a Wilder parent, alum, staff member or neighbor.</li>
+          <li>Share one specific story about what Wilder means to your family.</li>
+          <li>Make one clear ask, such as "evaluate alternatives before closing Wilder."</li>
+          <li>Keep it under 200 words and keep the tone respectful. District staff are reading a lot of email.</li>
+        </ul>
+        <div class="letter">
+          <div class="letter-head"><h3>Sample to adapt</h3><button class="copy" type="button" data-copy="sample">Copy text</button></div>
+<pre id="sample">Subject: Please keep Wilder Elementary open
+
+Dear Dr. Holmen and Board Directors,
+
+My name is [your name], and [my child is in __ grade at Wilder / I live in the Wilder neighborhood]. I understand LWSD is facing declining enrollment, and I support a careful realignment process.
+
+I'm asking you to keep Wilder open by first evaluating alternatives, such as boundary adjustments or program placements that fill Wilder's empty permanent seats. Please also publish the full net cost of any closure, including added busing.
+
+[One or two sentences about what Wilder means to your family.]
+
+Thank you for your work on this.
+
+[Your name]
+[Neighborhood]</pre>
+        </div>
+        <p class="avoid"><b>Please leave out:</b> criticism of other schools, home values, and anything suggesting the decision has already been made. These make it easier for a letter to be set aside.</p>
+      </div>
+
+      <div class="step">
+        <h3>3. Spread the word and show up</h3>
+        <p>Share this site with at least five friends and neighbors. Every signature counts, whether or not they have kids at Wilder.</p>
+        <div class="addr"><code id="a4">savewilder.com</code><button class="copy" type="button" data-copy="a4">Copy</button></div>
+        <p>Then watch the district's online information sessions, and plan to attend the in-person open houses in December and January. A full room matters. Dates are below.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dates">
+  <div class="wrap">
+    <p class="eyebrow">Key dates</p>
+    <h2>What happens when</h2>
+    <ol class="dates">
+      <li data-date="2026-10-28"><time>Wed, Oct 28</time><div class="what"><b>Info session 5: How decisions will be made</b><span>12 p.m. online. <a href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_MzA4YmUwOWQtMzk1ZS00NzM5LTg5MWEtOTYzZmYyMzg5Yzdl%40thread.v2/0?context=%7B%22Tid%22%3A%221fd4673f-df96-4621-8638-a1d88c4c85d7%22%2C%22Oid%22%3A%228e9a73cc-8293-4c60-b5e3-18cbc379ef93%22%7D" target="_blank" rel="noopener">Join on Teams</a></span></div></li>
+      <li data-date="2026-11-04"><time>Wed, Nov 4</time><div class="what"><b>Info session 6: Supporting students during change</b><span>12 p.m. online</span></div></li>
+      <li data-date="2026-11-09"><time>Mon, Nov 9</time><div class="what"><b>Info session 7: Choice schools &amp; programs</b><span>12 p.m. online</span></div></li>
+      <li data-date="2026-11-18"><time>Wed, Nov 18</time><div class="what"><b>Info session 8: Frequently asked questions</b><span>12 p.m. online</span></div></li>
+      <li data-date="2026-12-07"><time>Mon, Dec 7</time><div class="what"><b>School board study session</b><span>Boundary process update</span></div></li>
+      <li class="key" data-date="2026-12-10"><time>Dec 8–10</time><div class="what"><b>District open houses, round 1</b><span>Details to come from LWSD</span></div></li>
+      <li class="key" data-date="2027-01-29"><time>Jan 28–29</time><div class="what"><b>District open houses, round 2</b><span>Details to come from LWSD</span></div></li>
+      <li data-date="2027-02-08"><time>Mon, Feb 8</time><div class="what"><b>School board study session</b><span>Boundary process update</span></div></li>
+      <li class="key" data-date="2027-03-22"><time>Mon, Mar 22</time><div class="what"><b>Final recommendation to the school board</b></div></li>
+      <li data-date="2028-09-01"><time>Sept 2028</time><div class="what"><b>Any approved changes take effect</b></div></li>
+    </ol>
+    <p class="note">Recordings of past sessions and the latest schedule are on <a href="https://www.lwsd.org/realignment" target="_blank" rel="noopener">LWSD's realignment page</a>. The district notes its timeline is subject to change.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <p class="eyebrow">Questions</p>
+    <h2>Common questions</h2>
+    <div class="faq">
+      <details><summary>Has Wilder been chosen for closure?</summary><p>No. No school has been named. The district has said each learning area should expect some change, and that one or more schools could be identified for closure. That's why we're speaking up now, while options are still being evaluated.</p></details>
+      <details><summary>Who makes the decision?</summary><p>The district's Boundary &amp; Enrollment Realignment Committee and the superintendent develop a recommendation. The elected school board takes it up on March 22, 2027.</p></details>
+      <details><summary>Why not just move Wilder students to schools with space?</summary><p>Wilder is the only LWSD elementary in Woodinville, and every alternative is more than three miles away by road. Closing it moves our families farther than most closures would, adds bus costs, and risks families leaving the district altogether.</p></details>
+      <details><summary>I don't have kids at Wilder. Can I still help?</summary><p>Yes. Neighbors, alumni and future Wilder families are welcome to sign the petition and email the district.</p></details>
+      <details><summary>Is this an official district page?</summary><p>No. This page is run by Wilder parents and neighbors and isn't affiliated with Lake Washington School District.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Organized by Wilder Elementary parents and neighbors. Not affiliated with Lake Washington School District.</p>
+    <p>Sources:</p>
+    <ul>
+      <li><a href="https://www.lwsd.org/realignment" target="_blank" rel="noopener">LWSD Boundary &amp; Enrollment Realignment</a> and <a href="https://www.lwsd.org/realignment/boundary-enrollment-realignment-timeline" target="_blank" rel="noopener">timeline</a></li>
+      <li>LWSD capacity and enrollment table, October 2025 (Phase 1 Evaluation)</li>
+      <li><a href="https://www.schooldigger.com/go/WA/district/04230/search.aspx" target="_blank" rel="noopener">SchoolDigger rankings, 2026</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Copy buttons
+  document.querySelectorAll('.copy').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var el = document.getElementById(btn.getAttribute('data-copy'));
+      if(!el) return;
+      var text = el.textContent;
+      var label = btn.textContent;
+      function done(msg){ btn.textContent = msg; setTimeout(function(){ btn.textContent = label; }, 1600); }
+      function fallback(){
+        try{ var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done('Selected, press Copy'); }catch(e){}
+      }
+      try{
+        navigator.clipboard.writeText(text).then(function(){ done('Copied'); }, fallback);
+      }catch(e){ fallback(); }
+    });
+  });
+  // Mark past and next dates
+  var today = new Date(); today.setHours(0,0,0,0);
+  var foundNext = false;
+  document.querySelectorAll('.dates li').forEach(function(li){
+    var d = new Date(li.getAttribute('data-date') + 'T23:59:59');
+    if(d < today){ li.classList.add('past'); }
+    else if(!foundNext){ li.classList.add('next'); foundNext = true; }
+  });
+})();
+</script>
+</body>
+</html>
